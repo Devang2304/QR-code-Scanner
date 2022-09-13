@@ -5,3 +5,28 @@
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
 }
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #E3F2FD;
+}
+.wrapper{
+    width: 420px;
+    border-radius:7px;
+    background: #0B85FF;
+    padding: 30px 30px 35px;
+}
+.wrapper form{
+    background: #fff;
+    height: 225px;
+    display: flex;
+    text-align: center;
+    border-radius: 7px;
+    align-items: center;
+    justify-content: center;
+}
+form img{
+    display: none;
+}
