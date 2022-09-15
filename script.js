@@ -8,8 +8,10 @@ function fetchRequest(formData) {
     fetch("http://api.qrserver.com/v1/read-qr-code/",{
         method: "POST",body:formData
     }).then(res=>res.json()).then(
-        result=>console.log(result);
-    )
+        result=>{
+            wrapper.classList.add("active");
+            console.log(result);
+        });
 }
 
 fileInp.addEventListener("change",e=>{
