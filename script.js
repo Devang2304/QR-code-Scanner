@@ -3,6 +3,8 @@ form=wrapper.querySelector("form"),
 fileInp=form.querySelector("input")
 
 function fetchRequest(formData) {
+    //sending post request to qr server api with passing
+    //form data as body and getting response from it
     fetch("http://api.qrserver.com/v1/read-qr-code/",{
         method: "POST",body:formData
     }).then(res=>res.json()).then(
