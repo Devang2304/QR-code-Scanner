@@ -22,3 +22,5 @@ fileInp.addEventListener("change",e=>{
 });
 
 form.addEventListener("click",()=>fileInp.click())
+
+//now creating the javascript functions for the active state
