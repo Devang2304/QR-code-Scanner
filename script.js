@@ -1,8 +1,9 @@
 const wrapper=document.querySelector(".wrapper"),
 form=wrapper.querySelector("form"),
 fileInp=form.querySelector("input"),
-infoText=form.querySelector("p")
-;
+infoText=form.querySelector("p"),
+copyBtn=wrapper.querySelector(".copy"),
+closeBtn=wrapper.querySelector(".close");
 
 function fetchRequest(formData,file) {
     infoText.innerText="Scanning QR Code...";
@@ -13,19 +14,30 @@ function fetchRequest(formData,file) {
     }).then(res=>res.json()).then(
         result=>{
             result=result[0].symbol[0].data;
+            infoText.innerText=result ? "Upload QR code to Scan":"Couldn't Scan QR Code";
+            if(!result) return ;
             wrapper.querySelector("textarea").innerText=`${result}`;
-            console.log(result);
             form.querySelector("img").src=URL.createObjectURL(file);
-            infoText.innerText="Scanning QR Code...";
             wrapper.classList.add("active");
+        }).catch(()=>{
+            infoText.innerText="Couldn't Scan QR Code";
         });
 }
 
 fileInp.addEventListener("change",e=>{
     let file=e.target.files[0]; //getting the required user selected data
+    if(!file) return;
     let formData=new FormData(); //creating a new FormData object
     formData.append("file",file); //adding selected files to formData
     fetchRequest(formData,file);
 });
 
-form.addEventListener("click",()=>fileInp.click())
+copyBtn.addEventListener("click",()=>{
+    let text=wrapper.querySelector("textarea").textContent;
+    navigator.clipboard.writeText(text);
+    alert("Copied successful");
+});
+
+form.addEventListener("click",()=>fileInp.click());
+
+closeBtn.addEventListener("click",()=>wrapper.classList.remove("active"));
