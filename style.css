@@ -18,6 +18,10 @@ body{
     border-radius:7px;
     background: #0B85FF;
     padding: 30px 30px 35px;
+    transition: height 0.2s ease;
+}
+.wrapper.active{
+    height: 525px;
 }
 .wrapper form{
     background: #fff;
@@ -28,10 +32,21 @@ body{
     border-radius: 7px;
     align-items: center;
     justify-content: center;
+    transition: height 0.2s ease;
+}
+.wrapper.active form{
+    pointer-events: none;
+    height: 225px;
 }
 form img{
     display: none;
     max-width: 148px;
+}
+.wrapper.active img{
+    display: block;
+}
+.wrapper.active form .content{
+    display: none;
 }
 form .content i{
     color: #0B85FF;
@@ -46,6 +61,11 @@ form .content p{
     opacity: 0;
     margin-top: 25px;
     pointer-events: none;
+}
+.wrapper.active .details{
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s 0.05s ease;
 }
 .details textarea{
     width: 100%;
